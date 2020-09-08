@@ -7,3 +7,9 @@ orange
 grapes
 beetroot
 cucumber
+
+
+roses
+sunflower
+jasmine
+mariegold

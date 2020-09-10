@@ -1,0 +1,9 @@
+ 
+SHUTDOWN /r /f /t 0 /m \\10.20.128.150 /c "Maintenance Reboot CHG0041508"
+ 
+SHUTDOWN /r /f /t 0 /m \\10.20.128.151 /c "Maintenance Reboot CHG0041508"
+ 
+SHUTDOWN /r /f /t 0 /m \\10.20.128.100 /c "Maintenance Reboot CHG0041508"
+ 
+SHUTDOWN /r /f /t 0 /m \\10.20.128.101 /c "Maintenance Reboot CHG0041508"
+ 

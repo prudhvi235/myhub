@@ -1,0 +1,9 @@
+{
+	"name": "vallala-prod123",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3ab4c6b8-deb5-4c3f-94d4-bf7d032f6705",
+		"tenantId": "855b07d8-9a11-4d3c-98a1-632d7fb6e6df"
+	}
+}

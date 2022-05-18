@@ -1,0 +1,92 @@
+{
+	"name": "setvariable-ifcondition",
+	"properties": {
+		"activities": [
+			{
+				"name": "modify filename",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "filetype",
+					"value": {
+						"value": "@replace(pipeline().parameters.filename,'sales','')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "modify filename",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@equals(variables('filetype'),'hourly')",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "execute basic copy",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "Basiccopy",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"container": {
+										"value": "@pipeline().parameters.container",
+										"type": "Expression"
+									},
+									"directory_in": {
+										"value": "@pipeline().parameters.directory1",
+										"type": "Expression"
+									},
+									"directoy_out": {
+										"value": "@pipeline().parameters.directory2",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"filename": {
+				"type": "string",
+				"defaultValue": "hourlysales"
+			},
+			"container": {
+				"type": "string"
+			},
+			"directory1": {
+				"type": "string"
+			},
+			"directory2": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"filetype": {
+				"type": "String",
+				"defaultValue": "123456"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2022-05-18T06:04:10Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
